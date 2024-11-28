@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <!-- Favicon Link -->
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+   
+    .top-bar {
+        background-color: #0d4b9c;
+  background: linear-gradient(to right, #1e3c72, #2a5298); /* Gradient background */
+  color: white; /* Text color */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+}
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icons */
+}
+
+.social-icons .icon-circle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Circular icons */
+  background-color: white; /* Circle background */
+  color: #1e3c72; /* Icon color */
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.social-icons .icon-circle:hover {
+  background-color:lightblue; /* Highlight background on hover */
+  color: white; /* Icon color on hover */
+}
+
+.login .login-btn {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: 2px solid white;
+  border-radius: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.login .login-btn:hover {
+  background-color: white; /* White background on hover */
+  color: #1e3c72; /* Text color on hover */
+}
+
+   /* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: white;
+  border-bottom: 2px solid #ddd;
+}
+
+.navbar .logo img {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .nav-links li {
+  position: relative;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Dropdown Styles */
+.navbar .nav-links .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%; /* Ensures the dropdown appears just below the parent item */
+  left: 0;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 10px;
+  margin-top: 5px; /* Adds space between the parent link and dropdown */
+  z-index: 1050; /* Ensures the dropdown appears above other content */
+}
+
+.navbar .nav-links li:hover .dropdown {
+  display: block;
+}
+
+/* Dropdown Item Styles */
+.navbar .nav-links .dropdown li {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .nav-links .dropdown li a {
+  color: #333;
+  font-weight: normal;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .nav-links .dropdown li a i {
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+}
+
+.navbar .nav-links .dropdown li a:hover {
+  background-color: #f5a623;
+  color: white;
+}
+
+.navbar .nav-links .dropdown li a:hover i {
+  transform: scale(1.2);
+}
+
+    /* Carousel Styles */
+    .carousel-item img {
+      object-fit: cover;
+      width: 100%;
+      height: 500px; /* Adjust height for your carousel */
+    }
+
+    .carousel-caption {
+      text-align: left;
+      color: white;
+    }
+
+    .carousel-caption h1 {
+      font-size: 3rem;
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .carousel-caption p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      font-family: 'Arial', sans-serif;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .read-more-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #f5a623;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .read-more-btn:hover {
+      background-color: #d48800;
+    }
+    
+    /* Blog Section */
+    .blog-container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .blog-image {
+      flex: 1;
+      max-width: 50%;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .blog-text {
+      flex: 1;
+    }
+
+    .blog-category {
+      font-size: 14px;
+      color: #fff;
+      background-color:#2a5298;
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .blog-title {
+      font-size: 24px;
+      color: black;
+      margin: 0 0 10px;
+    }
+
+    .blog-metadata {
+      font-size: 14px;
+      color: #888;
+      margin: 0 0 20px;
+    }
+
+    .blog-content {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    /* Read More Button */
+    .read-more-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #2a5298;
+      border-radius: 25px;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .read-more-btn:hover {
+      background-color: #333;
+      color: #fff;
+    }
+
+    /* Related Blogs Section */
+    .related-blogs {
+      max-width: 900px;
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .related-blog {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .related-blog img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .related-content {
+      padding: 15px;
+    }
+
+    .related-content h4 {
+      margin: 0 0 5px 0;
+      font-size: 16px;
+      color: #2a5298;
+    }
+
+    .related-metadata {
+      font-size: 12px;
+      color:#2a5298;
+      margin: 5px 0 10px 0;
+    }
+
+    .related-content a {
+      text-decoration: none;
+      color: #2a5298;
+    }
+
+    .related-content a:hover {
+      text-decoration: underline;
+    }
+
+    .related-content p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    /* Button in Related Blogs */
+    .related-read-more {
+      display: inline-block;
+      padding: 8px 15px;
+      font-size: 14px;
+      color: #fff;
+      background-color: #2a5298;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .related-read-more:hover {
+      background-color: #2a5298;
+      color: white;}
+  </style>
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="social-icons">
+      <a href="#" class="icon-circle" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="icon-circle" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="icon-circle" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" class="icon-circle" title="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+    <div class="login">
+      <a href="/contact-us" class="login-btn">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div style="display: flex; align-items: center;">
+      <a href="/">
+        <img src="images/Nairus.png" alt="Nairus Logo" style="height: 80px; width: 80px; margin-right: 15px;">
+    </a>      
+    <div>
+      <!-- "Nairus" -->
+      <h1 style="
+      background-color: #0d4b9c;
+          font-size: 48px; 
+          margin: 0; 
+          font-family: 'Montserrat', sans-serif; 
+          font-weight: 900; 
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+          background: linear-gradient(to right, #1e3c72, #2a5298); 
+          -webkit-background-clip: text; 
+          -webkit-text-fill-color: transparent; 
+          -webkit-text-stroke: 1px rgba(30, 60, 114, 0.7);
+      ">
+        Nairus
+      </h1>
+    
+      <!-- "Tours & Travel" -->
+      <p style="
+          margin: 0; 
+          font-size: 22px; /* Slightly reduced font size */
+          font-family: 'Montserrat', sans-serif; 
+          color: #882211; 
+          font-weight: 800; 
+          text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); 
+          letter-spacing: -1px; /* Tightens spacing to shorten length */
+          -webkit-text-stroke: 0.5px rgba(123, 60, 60, 0.5);
+      ">
+        Tours & Travel
+      </p>
+    </div>
+    
+    </div>
+    <ul class="nav-links">
+      <li><a href="/who-we-are">Who We Are</a></li>
+      <li><a href="/hajj-umrah">Hajj and Umrah</a></li>
+      <li>
+        <a href="#">Safaris Packages <i class="fas fa-caret-down"></i></a>
+        <ul class="dropdown">
+          <li><a href="/kenya"><i class="fas fa-map-marker-alt"></i> Kenya</a></li>
+          <li><a href="/tanzania"><i class="fas fa-map-marker-alt"></i> Tanzania</a></li>
+        </ul>
+      </li>
+      <li><a href="/daily-packages">Daily Packages</a></li>
+      <li><a href="/gallery-section">Gallery</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/contact-us">Contact Us</a></li>
+    </ul>
+  </nav>
+  <!-- Blog Section -->
+  <% blogs.forEach(blog => { %>
+    <div class="blog-container">
+      <img src="<%= blog.image_url || 'images/default.jpg' %>" alt="Blog Image" class="blog-image">
+      <div class="blog-text">
+        <div class="blog-category"><%= blog.category %></div>
+        <h2 class="blog-title"><%= blog.title %></h2>
+        <div class="blog-metadata">Posted by <%= blog.author || 'Admin' %> | <%= blog.created_at.toLocaleDateString() %> | <%= blog.read_time || '5' %> min read</div>
+        <div class="blog-content">
+          <p><%= blog.excerpt || 'No content available.' %></p>
+        </div>
+        <a href="/blog/<%= blog.id %>" class="read-more-btn">Read More</a>
+      </div>
+    </div>
+  <% }) %>
+
+  <!-- Related Blogs Section -->
+  <div class="related-blogs">
+    <% blogs.slice(0, 3).forEach(relatedBlog => { %>
+      <div class="related-blog">
+        <img src="<%= relatedBlog.image_url || 'images/default.jpg' %>" alt="Related Blog">
+        <div class="related-content">
+          <h4><a href="/blog/<%= relatedBlog.id %>"><%= relatedBlog.title %></a></h4>
+          <div class="related-metadata">Category: <%= relatedBlog.category %> | By <%= relatedBlog.author || 'Admin' %> | <%= relatedBlog.created_at.toLocaleDateString() %> | <%= relatedBlog.read_time || '4' %> min read</div>
+          <p><%= relatedBlog.excerpt || 'No preview available.' %></p>
+          <a href="/blog/<%= relatedBlog.id %>" class="related-read-more">Read More</a>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+</body>
+
+
+<footer style="background-color: #2a5298; color: #fff; padding: 40px 20px; font-family: Arial, sans-serif;">
+  <div class="container" style="max-width: 1140px; margin: 0 auto;">
+      <div class="row" style="display: flex; flex-wrap: wrap;">
+          <!-- About Us Section -->
+          <div class="col-md-4" style="flex: 0 0 33.333%; max-width: 33.333%; margin-bottom: 20px;">
+              <h5 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 15px;">A little About Us <span style="color: #ffcc00;">.</span></h5>
+              <p style="margin: 0 0 15px;">We are a premier travel agency dedicated to providing exceptional travel experiences that cater to your individual needs.</p>
+              <div style="display: flex;">
+                  <a href="#" style="margin-right: 10px; color: #fff; width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; transition: all 0.3s;">
+                      <i class="fab fa-facebook fa-lg"></i>
+                  </a>
+                  <a href="#" style="margin-right: 10px; color: #fff; width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; transition: all 0.3s;">
+                      <i class="fab fa-twitter fa-lg"></i>
+                  </a>
+                  <a href="#" style="margin-right: 10px; color: #fff; width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; transition: all 0.3s;">
+                      <i class="fab fa-instagram fa-lg"></i>
+                  </a>
+                  <a href="#" style="margin-right: 10px; color: #fff; width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; transition: all 0.3s;">
+                      <i class="fab fa-pinterest fa-lg"></i>
+                  </a>
+              </div>
+          </div>
+
+          <!-- Useful Links Section -->
+          <div class="col-md-4" style="flex: 0 0 33.333%; max-width: 33.333%; margin-bottom: 20px;">
+              <h5 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 15px;">Useful Links <span style="color: #ffcc00;">.</span></h5>
+              <ul style="list-style: none; padding: 0; margin: 0;">
+                  <li style="margin-bottom: 10px;"><a href="#" style="color: #fff; text-decoration: none;">About Us</a></li>
+                  <li style="margin-bottom: 10px;"><a href="#" style="color: #fff; text-decoration: none;">Kenya Safaris</a></li>
+                  <li style="margin-bottom: 10px;"><a href="/private-safaris" style="color: #fff; text-decoration: none;">Tanzania Safaris</a></li>
+                  <li style="margin-bottom: 10px;"><a href="#" style="color: #fff; text-decoration: none;">Group Joining Safaris</a></li>
+                  <li style="margin-bottom: 10px;"><a href="#" style="color: #fff; text-decoration: none;">Private Safaris</a></li>
+              </ul>
+          </div>
+
+          <!-- Contact Section -->
+          <div class="col-md-4" style="flex: 0 0 33.333%; max-width: 33.333%; margin-bottom: 20px;">
+              <h5 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 15px;">Contact <span style="color: #ffcc00;">.</span></h5>
+              <address style="margin: 0 0 15px;">
+                  Istanbul Shopping Center First Floor,<br>
+                  Room A05 Captain Mungai Street,<br>
+                  Eastleigh Nairobi<br>
+              </address>
+              <p style="margin: 0;">
+                  <i class="fas fa-envelope"></i> <a href="mailto:info@nairustours.com" style="color: #fff; text-decoration: none;">info@nairustours.com</a><br>
+                  <i class="fas fa-phone"></i> +254 720 829908 | +254 20 676 3099
+              </p>
+          </div>
+      </div>
+
+      <!-- Bottom Footer Section -->
+      <div class="row mt-3" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+          <div class="col-md-6" style="flex: 0 0 50%; max-width: 50%;">
+              <p style="margin: 0;">All Rights Reserved!</p>
+          </div>
+          <div class="col-md-6" style="flex: 0 0 50%; max-width: 50%; text-align: right;">
+              <a href="#" style="color: #fff; text-decoration: none; margin-right: 15px;">Privacy</a>
+              <a href="#" style="color: #fff; text-decoration: none;">Terms & Conditions</a>
+          </div>
+      </div>
+  </div>
+  <a href="#" style="position: fixed; bottom: 20px; right: 20px; background: #2a5298; color: #fff; border-radius: 50%; width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; text-decoration: none; font-size: 1.5rem;">
+      <i class="fas fa-chevron-up"></i>
+  </a>
+</footer>
+
+</html>

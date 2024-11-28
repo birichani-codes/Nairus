@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <!-- Favicon Link -->
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <!-- Bootstrap CSS -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LeHXooqAAAAAA-3un9GzZE1H-qKoNkG4XaUtwPo" async defer></script> <!-- Updated site key -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    /* General styles */
+    body {
+
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    #testimonial-page {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    #reviews-container.grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .review-card {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .review-card h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .review-card p {
+      font-size: 14px;
+      color: #666;
+    }
+
+    #add-review-section {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    #add-review-btn {
+      background: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #add-review-btn:hover {
+      background: #0056b3;
+    }
+
+    #testimonial-form-container {
+      max-width: 600px;
+      margin: auto;
+      display: none;
+    }
+
+    #testimonial-form-container.hidden {
+      display: none;
+    }
+
+    #testimonial-form-container.active {
+      display: block;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      margin-top: 5px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    button {
+      margin-top: 20px;
+      background: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #218838;
+    }
+
+    .top-bar {
+        background-color: #0d4b9c;
+  background: linear-gradient(to right, #1e3c72, #2a5298); /* Gradient background */
+  color: white; /* Text color */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+}
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icons */
+}
+
+.social-icons .icon-circle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Circular icons */
+  background-color: white; /* Circle background */
+  color: #1e3c72; /* Icon color */
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.social-icons .icon-circle:hover {
+  background-color: #f5a623; /* Highlight background on hover */
+  color: white; /* Icon color on hover */
+}
+
+.login .login-btn {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: 2px solid white;
+  border-radius: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.login .login-btn:hover {
+  background-color: white; /* White background on hover */
+  color: #1e3c72; /* Text color on hover */
+}
+
+   /* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: white;
+  border-bottom: 2px solid #ddd;
+}
+
+.navbar .logo img {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .nav-links li {
+  position: relative;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Dropdown Styles */
+.navbar .nav-links .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%; /* Ensures the dropdown appears just below the parent item */
+  left: 0;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 10px;
+  margin-top: 5px; /* Adds space between the parent link and dropdown */
+  z-index: 1050; /* Ensures the dropdown appears above other content */
+}
+
+.navbar .nav-links li:hover .dropdown {
+  display: block;
+}
+
+/* Dropdown Item Styles */
+.navbar .nav-links .dropdown li {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .nav-links .dropdown li a {
+  color: #333;
+  font-weight: normal;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .nav-links .dropdown li a i {
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+}
+
+.navbar .nav-links .dropdown li a:hover {
+  background-color: #f5a623;
+  color: white;
+}
+
+.navbar .nav-links .dropdown li a:hover i {
+  transform: scale(1.2);
+}
+
+
+    /* Carousel Styles */
+    .carousel-item img {
+      object-fit: cover;
+      width: 100%;
+      height: 500px; /* Adjust height for your carousel */
+    }
+
+    .carousel-caption {
+      text-align: left;
+      color: white;
+    }
+
+    .carousel-caption h1 {
+      font-size: 3rem;
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .carousel-caption p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      font-family: 'Arial', sans-serif;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .read-more-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #f5a623;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .read-more-btn:hover {
+      background-color: #d48800;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    .gallery {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .gallery-header h1 {
+      font-size: 1.5rem; /* Reduced header font size */
+      color: #333;
+    }
+
+    .gallery-header input {
+      padding: 8px; /* Reduced input padding */
+      width: 80%;
+      max-width: 600px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Increased card width */
+      gap: 20px; /* Increased spacing between cards */
+    }
+
+    .gallery-item {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Increased shadow size */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      animation: fadeIn 0.5s ease; /* Animation for appearance */
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 250px; /* Increased image height */
+      object-fit: cover;
+    }
+
+    .gallery-info {
+      padding: 15px; /* Reduced padding inside the info area */
+      text-align: center;
+    }
+
+    .gallery-info h3 {
+      font-size: 1rem; /* Reduced font size for titles */
+      margin: 0 0 5px;
+      color: #333;
+    }
+
+    .gallery-info .gallery-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gallery-info .icon {
+      font-size: 1rem; /* Increased icon size */
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s ease;
+    }
+
+    .gallery-info .icon.like:hover {
+      color: red;
+      transform: scale(1.1); /* Slightly reduced hover scale effect */
+    }
+
+    .gallery-tags {
+      position: absolute;
+      top: 10px; /* Adjusted positioning */
+      left: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 5px 10px; /* Increased padding for tags */
+      border-radius: 5px;
+      font-size: 0.8rem; /* Slightly larger tag font size */
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .pagination button {
+      margin: 0 5px;
+      padding: 8px 12px; /* Increased button padding */
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 5px;
+      font-size: 1rem; /* Increased button font size */
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .pagination button:hover {
+      background-color: #0056b3;
+    }
+
+    .pagination button.disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .pagination .active {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="social-icons">
+      <a href="#" class="icon-circle" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="icon-circle" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="icon-circle" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" class="icon-circle" title="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+    <div class="login">
+      <a href="/reviews" class="login-btn">Login</a>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div style="display: flex; align-items: center;">
+        <a href="/">
+            <img src="images/Nairus.png" alt="Nairus Logo" style="height: 80px; width: 80px; margin-right: 15px;">
+        </a>      <div>
+        <!-- "Nairus" -->
+        <h1 style="
+            font-size: 48px; 
+            margin: 0; 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 900; 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+            background: linear-gradient(to right, #1e3c72, #2a5298); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            -webkit-text-stroke: 1px rgba(30, 60, 114, 0.7);
+        ">
+          Nairus
+        </h1>
+      
+        <!-- "Tours & Travel" -->
+        <p style="
+            margin: 0; 
+            font-size: 24px; /* Slightly reduced font size */
+            font-family: 'Montserrat', sans-serif; 
+            color: #7B3C3C; 
+            font-weight: 800; 
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); 
+            letter-spacing: -1px; /* Tightens spacing to shorten length */
+            -webkit-text-stroke: 0.5px rgba(123, 60, 60, 0.5);
+        ">
+          Tours & Travel
+        </p>
+      </div>
+      
+    </div>
+    <ul class="nav-links">
+      <li><a href="/who-we-are">Who We Are</a></li>
+      <li><a href="hajj-umrah">Hajj and Umrah</a></li>
+      <li>
+        <a href="#">Safaris Packages <i class="fas fa-caret-down"></i></a>
+        <ul class="dropdown">
+          <li><a href="/kenya"><i class="fas fa-map-marker-alt"></i> Kenya</a></li>
+          <li><a href="/tanzania"><i class="fas fa-map-marker-alt"></i> Tanzania</a></li>
+        </ul>
+      </li>
+      <li><a href="/daily-packages">Daily Packages</a></li>
+      <li><a href="/gallery-section">Gallery</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/contact-us">Contact Us</a></li>
+    </ul>
+  </nav>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="about-section container">
+        <!-- Welcome Header -->
+<h1 style="
+font-size: 32px; 
+text-align: center; 
+color: black; 
+font-family: Arial, sans-serif; 
+font-weight: 700; /* Bolder for "fatter" appearance */
+margin-top: 40px; /* Increased margin for spacing */
+text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4); /* Reflective effect */
+">
+Welcome to Nairus Tours and Travel
+</h1>
+
+<!-- Subtitle -->
+<p style="
+font-size: 24px; 
+text-align: center; 
+font-family: Arial, sans-serif; 
+font-weight: 600; /* Bolder for increased thickness */
+background: linear-gradient(to right, #1e3c72, #2a5298); 
+-webkit-background-clip: text; 
+-webkit-text-fill-color: transparent; /* Gradient applied only to text */
+margin-top: 20px; /* Added spacing below the main header */
+line-height: 1.6; /* Slightly larger line height for readability */
+">
+Your Ultimate Travel Experience Provider! <br>
+A Travel Safaris Company in Kenya
+</p>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="images/w-w-a-1.jpg" alt="Image 1" style="height: 400px;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/w-w-a-2.jpg" alt="Image 2" style="height: 400px;">
+
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/w-w-3.jpg" alt="Image 3" style="height: 400px;">
+
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="about-content">
+                    <p style="font-size: 18px; color: #333;">We are a Kenyan-based tours and travel safaris company with over 8 years in providing tailor-made, personalized professional travel experiences for inbound safaris in Kenya and across East Africa...</p>
+                    <div class="about-services">
+                        <strong style="font-size: 18px; font-weight: bold; color: #333; display: block; margin-bottom: 15px;">Our Services Include:</strong>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="display: flex; align-items: center; margin-bottom: 15px; font-size: 16px; font-weight: 500; color: #333; transition: transform 0.3s ease, color 0.3s ease;">
+                                <i class="fa fa-suitcase" style="font-size: 18px; margin-right: 15px; color: #007bff; transition: transform 0.3s ease, color 0.3s ease;" aria-hidden="true"></i>
+                                Private and Group Joining Travel packages
+                            </li>
+                            <li style="display: flex; align-items: center; margin-bottom: 15px; font-size: 16px; font-weight: 500; color: #333; transition: transform 0.3s ease, color 0.3s ease;">
+                                <i class="fa fa-hotel" style="font-size: 18px; margin-right: 15px; color: #007bff; transition: transform 0.3s ease, color 0.3s ease;" aria-hidden="true"></i>
+                                Hotel booking and reservations
+                            </li>
+                            <li style="display: flex; align-items: center; margin-bottom: 15px; font-size: 16px; font-weight: 500; color: #333; transition: transform 0.3s ease, color 0.3s ease;">
+                                <i class="fa fa-car" style="font-size: 18px; margin-right: 15px; color: #007bff; transition: transform 0.3s ease, color 0.3s ease;" aria-hidden="true"></i>
+                                Car rental and transfers
+                            </li>
+                            <li style="display: flex; align-items: center; margin-bottom: 15px; font-size: 16px; font-weight: 500; color: #333; transition: transform 0.3s ease, color 0.3s ease;">
+                                <i class="fa fa-plane" style="font-size: 18px; margin-right: 15px; color: #007bff; transition: transform 0.3s ease, color 0.3s ease;" aria-hidden="true"></i>
+                                Flight booking & ticketing
+                            </li>
+                            <li style="display: flex; align-items: center; margin-bottom: 15px; font-size: 16px; font-weight: 500; color: #333; transition: transform 0.3s ease, color 0.3s ease;">
+                                <i class="fa fa-train" style="font-size: 18px; margin-right: 15px; color: #007bff; transition: transform 0.3s ease, color 0.3s ease;" aria-hidden="true"></i>
+                                Nairobi-Mombasa SGR train booking and ticketing
+                            </li>
+                            <li style="display: flex; align-items: center; margin-bottom: 15px; font-size: 16px; font-weight: 500; color: #333; transition: transform 0.3s ease, color 0.3s ease;">
+                                <i class="fa fa-users" style="font-size: 18px; margin-right: 15px; color: #007bff; transition: transform 0.3s ease, color 0.3s ease;" aria-hidden="true"></i>
+                                Corporate teambuilding and training
+                            </li>
+                            <li style="display: flex; align-items: center; margin-bottom: 15px; font-size: 16px; font-weight: 500; color: #333; transition: transform 0.3s ease, color 0.3s ease;">
+                                <i class="fa fa-campground" style="font-size: 18px; margin-right: 15px; color: #007bff; transition: transform 0.3s ease, color 0.3s ease;" aria-hidden="true"></i>
+                                Budget Camping and Walking safaris
+                            </li>
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+    </section>
+<!-- Mission, Vision, and Values Section -->
+<!-- Mission, Vision, and Values Section -->
+<section class="mission-vision-section container" style="padding: 40px 0;">
+    <!-- Main Title -->
+    <h1 class="mission-vision-title" 
+        style="
+        text-align: center; 
+        font-size: 36px; 
+        font-weight: 700; 
+        background: linear-gradient(to right, #1e3c72, #2a5298); 
+        -webkit-background-clip: text; 
+        -webkit-text-fill-color: transparent; 
+        margin-bottom: 10px;">
+        What Drives Us?
+    </h1>
+
+    <!-- Subtitle -->
+    <h2 style="
+        text-align: center; 
+        font-size: 24px; 
+        color: black; 
+        font-weight: 700; 
+        margin-bottom: 40px;">
+        Our Philosophy
+    </h2>
+
+    <div class="mission-vision-content" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px;">
+        
+        <!-- Mission Section -->
+        <div class="mission-vision-values" style="flex: 1; min-width: 280px; background-color: #f9f9f9; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                <i class="fa fa-bullseye" style="font-size: 30px; margin-right: 15px; color: #007bff;"></i>
+                <h3 style="
+                    font-size: 22px; 
+                    font-weight: 700; 
+                    background: linear-gradient(to right, #1e3c72, #2a5298); 
+                    -webkit-background-clip: text; 
+                    -webkit-text-fill-color: transparent;">
+                    Our Mission Statement
+                </h3>
+            </div>
+            <p style="font-size: 16px; color: #555;">At Nairus Tours and Travel, we are committed to delivering unparalleled travel experiences that blend luxury and responsibility.
+
+                Our mission is to serve our clients with exceptional services that surpass expectations while designing unique travel adventures that adhere to principles of sustainability and social consciousness.
+                
+                We believe in creating journeys that not only satisfy wanderlust but also contribute positively to the communities and environments we visit.
+                
+                As a team, we strive to uplift global travel standards by prioritizing ethical practices, fostering cultural understanding, and advocating for responsible tourism. Whether you’re seeking a tranquil retreat or an adventurous escape, we tailor each experience to not only fulfill personal desires but to leave a lasting, positive impact on the world.</p>
+        </div>
+
+        <!-- Vision Section -->
+        <div class="mission-vision-values" style="flex: 1; min-width: 280px; background-color: #f9f9f9; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                <i class="fa fa-eye" style="font-size: 30px; margin-right: 15px; color: #007bff;"></i>
+                <h3 style="
+                    font-size: 22px; 
+                    font-weight: 700; 
+                    background: linear-gradient(to right, #1e3c72, #2a5298); 
+                    -webkit-background-clip: text; 
+                    -webkit-text-fill-color: transparent;">
+                    Our Vision Statement
+                </h3>
+            </div>
+            <p style="font-size: 16px; color: #555;">At Nairus Tours and Travel, our vision is to be the leading provider of transformative travel experiences that inspire and rejuvenate the soul.
+
+                We aspire to connect our clients with the awe-inspiring beauty of the natural world through our expertly curated safari adventures and to facilitate spiritually enriching journeys through our tailored Hajj and Umrah services.
+                
+                Our goal is to create seamless, enriching, and memorable experiences that foster a deep connection with nature and spirituality. By prioritizing customer satisfaction, safety, and sustainable practices,
+                We aim to redefine the travel experience while leaving a positive footprint on the communities and environments we engage with.
+                
+                We envision a world where travel is a conduit for cultural appreciation, personal growth, and lasting memories.</p>
+        </div>
+
+        <!-- Values Section -->
+        <div class="mission-vision-values" style="flex: 1; min-width: 280px; background-color: #f9f9f9; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                <i class="fa fa-thumbs-up" style="font-size: 30px; margin-right: 15px; color: #007bff;"></i>
+                <h3 style="
+                    font-size: 22px; 
+                    font-weight: 700; 
+                    background: linear-gradient(to right, #1e3c72, #2a5298); 
+                    -webkit-background-clip: text; 
+                    -webkit-text-fill-color: transparent;">
+                    Our Values
+                </h3>
+            </div>
+            <ul style="font-size: 16px; color: #555; list-style: none; padding-left: 20px;">
+                <li><i class="fa fa-check-circle" style="color: #007bff; margin-right: 10px;"></i>Commitment to perfection</li>
+                <li><i class="fa fa-check-circle" style="color: #007bff; margin-right: 10px;"></i>Integrity and Transparency</li>
+                <li><i class="fa fa-check-circle" style="color: #007bff; margin-right: 10px;"></i>Customer-Centric Approach</li>
+                <li><i class="fa fa-check-circle" style="color: #007bff; margin-right: 10px;"></i>Respect for Nature and Culture</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Add hover effects -->
+<style>
+    .mission-vision-values:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+
+    <!-- Link to Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<footer style="background: linear-gradient(to right, #1e3c72, #2a5298);  color: #fff; padding: 40px 20px; font-family: Arial, sans-serif;">
+    <div class="container" style="max-width: 1140px; margin: 0 auto;">
+        <div class="row" style="display: flex; flex-wrap: wrap;">
+            <!-- About Us Section -->
+            <div class="col-md-4" style="flex: 0 0 33.333%; max-width: 33.333%; margin-bottom: 20px;">
+                <h5 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 15px;">A little About Us <span style="color: #ffcc00;">.</span></h5>
+                <p style="margin: 0 0 15px;">With over 13 years of experience, Nairus Tours and Travel is your go-to for unforgettable tours and travel experiences. We specialize in crafting tailor-made journeys for travelers across Kenya and East Africa, offering both inbound and outbound packages. Whether you’re looking for an adventurous safari, a serene beach escape, or a spiritual pilgrimage, we cater to every need, ensuring each experience is unique and memorable</p>
+                <div style="display: flex;">
+                    <a href="#" style="margin-right: 10px; color: #fff; width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; transition: all 0.3s;">
+                        <i class="fab fa-facebook fa-lg"></i>
+                    </a>
+                    <a href="#" style="margin-right: 10px; color: #fff; width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; transition: all 0.3s;">
+                        <i class="fab fa-twitter fa-lg"></i>
+                    </a>
+                    <a href="#" style="margin-right: 10px; color: #fff; width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; transition: all 0.3s;">
+                        <i class="fab fa-instagram fa-lg"></i>
+                    </a>
+                    <a href="#" style="margin-right: 10px; color: #fff; width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; transition: all 0.3s;">
+                        <i class="fab fa-pinterest fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+  
+            <!-- Useful Links Section -->
+            <div class="col-md-4" style="flex: 0 0 33.333%; max-width: 33.333%; margin-bottom: 20px;">
+                <h5 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 15px;">Useful Links <span style="color: #ffcc00;">.</span></h5>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 10px;"><a href="#" style="color: #fff; text-decoration: none;">About Us</a></li>
+                    <li style="margin-bottom: 10px;"><a href="#" style="color: #fff; text-decoration: none;">Kenya Safaris</a></li>
+                    <li style="margin-bottom: 10px;"><a href="/private-safaris" style="color: #fff; text-decoration: none;">Tanzania Safaris</a></li>
+                    <li style="margin-bottom: 10px;"><a href="#" style="color: #fff; text-decoration: none;">Group Joining Safaris</a></li>
+                    <li style="margin-bottom: 10px;"><a href="#" style="color: #fff; text-decoration: none;">Private Safaris</a></li>
+                </ul>
+            </div>
+  
+            <!-- Contact Section -->
+            <div class="col-md-4" style="flex: 0 0 33.333%; max-width: 33.333%; margin-bottom: 20px;">
+                <h5 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 15px;">Contact <span style="color: #ffcc00;">.</span></h5>
+                <address style="margin: 0 0 15px;">
+                    Istanbul Shopping Center First Floor,<br>
+                    Room A05 Captain Mungai Street,<br>
+                    Eastleigh Nairobi<br>
+                </address>
+                <p style="margin: 0;">
+                    <i class="fas fa-envelope"></i> <a href="mailto:info@nairustours.com" style="color: #fff; text-decoration: none;">info@nairustours.com</a><br>
+                    <i class="fas fa-phone"></i> +254 720 829908 | +254 20 676 3099
+                </p>
+            </div>
+        </div>
+  
+        <!-- Bottom Footer Section -->
+        <div class="row mt-3" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+            <div class="col-md-6" style="flex: 0 0 50%; max-width: 50%;">
+                <p style="margin: 0;">All Rights Reserved!</p>
+            </div>
+            <div class="col-md-6" style="flex: 0 0 50%; max-width: 50%; text-align: right;">
+                <a href="#" style="color: #fff; text-decoration: none; margin-right: 15px;">Privacy</a>
+                <a href="#" style="color: #fff; text-decoration: none;">Terms & Conditions</a>
+            </div>
+        </div>
+    </div>
+    <a href="#" style="position: fixed; bottom: 20px; right: 20px; background: #2a5298; color: #fff; border-radius: 50%; width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; text-decoration: none; font-size: 1.5rem;">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+  </footer>
+
+</html>

@@ -1,0 +1,21 @@
+{
+    "name": "nairus-tour-travel",
+    "version": "1.0.0",
+    "description": "A tour and travel application",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon server.js"
+    },
+    "dependencies": {
+        "dotenv": "^16.0.3",
+        "ejs": "^3.1.10",
+        "express": "^4.18.2",
+        "node-fetch": "^2.7.0",
+        "pg": "^8.13.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.19"
+    },
+    "author": "Birichani Codes",
+    "license": "ISC"
+}

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Template</title>
+  <style>
+    /* General Reset */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Section 1: Cards */
+    .card-section {
+      display: flex;
+      justify-content: space-around;
+      gap: 20px;
+      padding: 40px;
+      background-color: #f9f9f9;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 300px;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-content h3 {
+      margin: 10px 0;
+      font-size: 20px;
+      color: #333;
+    }
+
+    .card-content p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .card-content a {
+      color: #ff6f00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .card-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Section 2: Features */
+    .features-section {
+      background-color: #fff;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .features-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .feature {
+      max-width: 250px;
+      text-align: center;
+    }
+
+    .feature-icon {
+      font-size: 50px;
+      color: #ff6f00;
+      margin-bottom: 20px;
+    }
+
+    .feature h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .feature p {
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <!-- Section 1: Cards -->
+  <div class="card-section">
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="Mt Kenya">
+      <div class="card-content">
+        <h3>Mt Kenya & Kilimanjaro</h3>
+        <p>Climbing & Hiking Adventures</p>
+        <a href="#">More Info →</a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="Masai Mara">
+      <div class="card-content">
+        <h3>Masai Mara Migration</h3>
+        <p>Great Wildebeest Migration</p>
+        <a href="#">More Info →</a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="International Holidays">
+      <div class="card-content">
+        <h3>International Holidays</h3>
+        <p>Exotic Destinations</p>
+        <a href="#">More Info →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Features -->
+  <div class="features-section">
+    <h2>Why Choose Us?</h2>
+    <div class="features-container">
+      <div class="feature">
+        <div class="feature-icon">🤝</div>
+        <h3>Personalized Service</h3>
+        <p>Our guides customize programs for every client.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⏰</div>
+        <h3>Guaranteed Departure</h3>
+        <p>Once booked, your trip is guaranteed to proceed.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">😊</div>
+        <h3>Customer Satisfaction</h3>
+        <p>We value your feedback to enhance your experience.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🛡️</div>
+        <h3>Safety</h3>
+        <p>International standards & first aid training provided.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">✈️</div>
+        <h3>Easy Booking</h3>
+        <p>Advance payment options for seamless booking.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🚐</div>
+        <h3>Daily Departures</h3>
+        <p>We run trips even for a single client!</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+
+<!-- Footer Section -->
+<footer style="background: linear-gradient(to right, #1e3c72, #2a5298); color: #fff; padding: 30px 15px; font-family: 'Roboto', sans-serif;">
+    <div class="container" style="max-width: 1000px; margin: 0 auto;">
+        <div class="row" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            
+            <!-- About Us Section -->
+            <div class="col-md-4" style="flex: 0 0 30%; max-width: 30%; margin-bottom: 15px;">
+                <h5 style="font-size: 1.1rem; font-weight: 200; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">A little About Us <span style="color: #ffcc00;">.</span></h5>
+                <p style="margin: 0 0 8px; font-size: 0.85rem; line-height: 1.5; color: #e0e0e0;">We are a premier travel agency offering exceptional travel experiences tailored to your needs. Explore East Africa with us and create unforgettable memories.</p>
+                <div style="display: flex; gap: 8px;">
+                    <!-- Social Media Icons with Hover Effect -->
+                    <a href="#" style="color: #fff; width: 30px; height: 30px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; transition: all 0.3s;">
+                        <i class="fab fa-facebook fa-lg" style="transition: transform 0.3s;"></i>
+                    </a>
+                    <a href="#" style="color: #fff; width: 30px; height: 30px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; transition: all 0.3s;">
+                        <i class="fab fa-twitter fa-lg" style="transition: transform 0.3s;"></i>
+                    </a>
+                    <a href="#" style="color: #fff; width: 30px; height: 30px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; transition: all 0.3s;">
+                        <i class="fab fa-instagram fa-lg" style="transition: transform 0.3s;"></i>
+                    </a>
+                    <a href="#" style="color: #fff; width: 30px; height: 30px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; transition: all 0.3s;">
+                        <i class="fab fa-pinterest fa-lg" style="transition: transform 0.3s;"></i>
+                    </a>
+                </div>
+            </div>
+  
+            <!-- Useful Links Section -->
+            <div class="col-md-4" style="flex: 0 0 30%; max-width: 30%; margin-bottom: 15px;">
+                <h5 style="font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;">Useful Links <span style="color: #ffcc00;">.</span></h5>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem;">
+                    <li style="margin-bottom: 6px;"><a href="#" style="color: #fff; text-decoration: none; transition: color 0.3s;">About Us</a></li>
+                    <li style="margin-bottom: 6px;"><a href="#" style="color: #fff; text-decoration: none; transition: color 0.3s;">Kenya Safaris</a></li>
+                    <li style="margin-bottom: 6px;"><a href="#" style="color: #fff; text-decoration: none; transition: color 0.3s;">Tanzania Safaris</a></li>
+                    <li style="margin-bottom: 6px;"><a href="#" style="color: #fff; text-decoration: none; transition: color 0.3s;">Group Joining Safaris</a></li>
+                    <li style="margin-bottom: 6px;"><a href="#" style="color: #fff; text-decoration: none; transition: color 0.3s;">Private Safaris</a></li>
+                </ul>
+            </div>
+  
+            <!-- Contact Section -->
+            <div class="col-md-4" style="flex: 0 0 30%; max-width: 30%; margin-bottom: 15px;">
+                <h5 style="font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;">Contact <span style="color: #ffcc00;">.</span></h5>
+                <address style="margin: 0 0 8px; font-size: 0.85rem; line-height: 1.5;">
+                    Istanbul Shopping Center, First Floor,<br>
+                    Room A05 Captain Mungai Street,<br>
+                    Eastleigh, Nairobi<br>
+                </address>
+                <p style="margin: 0; font-size: 0.85rem;">
+                    <i class="fas fa-envelope" style="margin-right: 6px;"></i><a href="mailto:info@nairustours.com" style="color: #fff; text-decoration: none;">info@nairustours.com</a><br>
+                    <i class="fas fa-phone" style="margin-right: 6px;"></i> +254 720 829908 | +254 20 676 3099
+                </p>
+            </div>
+        </div>
+  
+        <!-- Bottom Footer Section -->
+        <div class="row mt-3" style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+            <div class="col-md-6" style="flex: 0 0 50%; max-width: 50%;">
+                <p style="margin: 0; font-size: 0.8rem; font-weight: 300;">&copy; 2024 All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6" style="flex: 0 0 50%; max-width: 50%; text-align: right;">
+                <a href="#" style="color: #fff; text-decoration: none; margin-right: 10px; transition: color 0.3s;">Privacy</a>
+                <a href="#" style="color: #fff; text-decoration: none; transition: color 0.3s;">Terms & Conditions</a>
+            </div>
+        </div>
+    </div>
+  
+    <!-- Back to Top Button -->
+    <a href="#" style="position: fixed; bottom: 15px; right: 15px; color: #007bff; border-radius: 50%; width: 45px; height: 45px; display: flex; justify-content: center; align-items: center; text-decoration: none; font-size: 1.3rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: all 0.3s;">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+  </footer>
+  
+</html>
